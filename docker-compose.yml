@@ -1,0 +1,22 @@
+version: "3.1"
+services:
+  api_service:
+    container_name: spring-boot-ci-cd
+    build: .
+    restart: always
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgresql_ci_cd
+    links:
+      - postgresql_ci_cd:postgresql_ci_cd
+  postgresql_db:
+    container_name: postgresql-simple-ci-cd
+    image: "postgres:15-alpine3.17"
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: spring_boot_ci_cd
+      POSTGRES_USER: spring_ci_cd_to_dev
+      POSTGRES_PASSWORD: nE5kMc7JCGNqwDQM
