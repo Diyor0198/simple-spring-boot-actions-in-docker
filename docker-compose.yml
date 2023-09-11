@@ -10,7 +10,7 @@ services:
       - postgresql_ci_cd
     links:
       - postgresql_ci_cd:postgresql_ci_cd
-  postgresql_db:
+  postgresql_ci_cd:
     container_name: postgresql-simple-ci-cd
     image: "postgres:15-alpine3.17"
     restart: always

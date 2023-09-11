@@ -35,10 +35,11 @@ public class UserController {
                   return this.userService.delete(userId);
          }
 
-         @GetMapping("/get-all")
+         @GetMapping("/get")
          public ResponseDto<List<UserDto>> getAll() {
                   return this.userService.getAll();
          }
+
 }
 
 
