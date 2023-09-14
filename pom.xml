@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.company</groupId>
-    <artifactId>spring-boot-actions-in-docker</artifactId>
+    <artifactId>spring-CI-CD-GitHub-WithDocker</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-actions-in-docker</name>
-    <description>spring-boot-actions-in-docker</description>
+    <name>spring-CI-CD-GitHub-WithDocker</name>
+    <description>spring-CI-CD-GitHub-WithDocker</description>
     <properties>
         <mapstruct.version>1.5.3.Final</mapstruct.version>
         <lombok.version>1.18.24</lombok.version>

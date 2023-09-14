@@ -1,22 +1,52 @@
-version: "3.1"
+version: "3.7"
+
 services:
-  api_service:
-    container_name: spring-boot-ci-cd
+  first_app:
+    container_name: spring-ci-cd-container
     build: .
     restart: always
     ports:
       - "8081:8080"
     depends_on:
-      - postgresql_ci_cd
+      - postgresql
     links:
-      - postgresql_ci_cd:postgresql_ci_cd
-  postgresql_ci_cd:
-    container_name: postgresql-simple-ci-cd
-    image: "postgres:15-alpine3.17"
+      - postgresql:postgresql
+  postgresql:
+    container_name: postgres-ci-cd-container
+    image: "postgres:15"
     restart: always
     ports:
       - "5433:5432"
     environment:
-      POSTGRES_DB: spring_boot_ci_cd
-      POSTGRES_USER: spring_ci_cd_to_dev
-      POSTGRES_PASSWORD: nE5kMc7JCGNqwDQM
+      POSTGRES_DB: postgresDb-ci-cd
+      POSTGRES_USER: postgres-ci-cd-user
+      POSTGRES_PASSWORD: root-ci-cd
+
+
+
+
+
+
+
+#version: "3.1"
+#services:
+#  api_service:
+#    container_name: spring-boot-ci-cd
+#    build: .
+#    restart: always
+#    ports:
+#      - "8081:8080"
+#    depends_on:
+#      - postgresql_ci_cd
+#    links:
+#      - postgresql_ci_cd:postgresql_ci_cd
+#  postgresql_ci_cd:
+#    container_name: postgresql-simple-ci-cd
+#    image: "postgres:15-alpine3.17"
+#    restart: always
+#    ports:
+#      - "5433:5432"
+#    environment:
+#      POSTGRES_DB: spring_boot_ci_cd
+#      POSTGRES_USER: spring_ci_cd_to_dev
+#      POSTGRES_PASSWORD: nE5kMc7JCGNqwDQM

@@ -2,13 +2,24 @@ name: Build & Deploy Spring Application
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
-  build-deploy:
+  build:
     name: Build and Deploy Spring boot for my-project
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres-ci-cd-user
+          POSTGRES_PASSWORD: root-ci-cd
+          POSTGRES_DB: postgresDb-ci-cd
+        ports:
+          - 5433:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,9 +29,13 @@ jobs:
         with:
           distribution: 'corretto'
           java-version: 17
+          cache: maven
 
       - name: Unit Tests
         run: mvn -B test --file pom.xml
+
+      - name: Build with Maven
+        run: mvn clean install
 
       - name: Build the application
         run: |
@@ -43,6 +58,7 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
+          image: diyorbek0198/simple-spring-boot-ci-cd
           context: .
           dockerfile: Dockerfile
           push: true
