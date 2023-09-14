@@ -1,10 +1,10 @@
-name: Build & Deploy Spring Application
+name: simple-spring-boot-ci-cd
 
 on:
   push:
-    branches: [ "master" ]
+    branches: master
   pull_request:
-    branches: [ "master" ]
+    branches: master
 
 jobs:
   build:
