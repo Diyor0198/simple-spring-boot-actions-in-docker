@@ -39,7 +39,7 @@ jobs:
           image: first-app-images
           context: .
           dockerfile: Dockerfile
-          push: false
+          push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simple-spring-boot-ci-cd
           build-args: |
             SPRING_DATASOURCE_URL:jdbc:postgresql://postgresql:5433/first_db
