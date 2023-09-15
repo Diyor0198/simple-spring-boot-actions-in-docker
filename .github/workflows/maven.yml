@@ -42,7 +42,7 @@ jobs:
           push: false
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simple-spring-boot-ci-cd
           build-args: |
-            SPRING_DATASOURCE_URL:jdbc:postgresql://postgresql:5432/first_db
+            SPRING_DATASOURCE_URL:jdbc:postgresql://postgresql:5433/first_db
             SPRING_DATASOURCE_USERNAME:first_user
             SPRING_DATASOURCE_PASSWORD:root
           registry: docker.io
