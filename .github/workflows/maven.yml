@@ -19,7 +19,6 @@ jobs:
       - name: Connect to PostgreSQL
         uses: harmon758/postgresql-action@v1
         with:
-          container_name: postgresql-simple
           postgresql version: '15'
           postgresql db: 'first_db'
           postgresql user: 'first_user'
@@ -43,7 +42,7 @@ jobs:
           push: false
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simple-spring-boot-ci-cd
           build-args: |
-            SPRING_DATASOURCE_URL:jdbc:postgresql://postgresql/first_db
+            SPRING_DATASOURCE_URL:jdbc:postgresql://postgresql:5432/first_db
             SPRING_DATASOURCE_USERNAME:first_user
             SPRING_DATASOURCE_PASSWORD:root
           registry: docker.io
